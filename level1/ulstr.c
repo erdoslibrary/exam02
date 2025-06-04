@@ -15,13 +15,19 @@ char change_upper_lower(char c)
 	return c;
 }
 
+void ulstr(char *str)
+{
+	while (*str)
+	{
+		ft_putchar(change_upper_lower(*str));
+		str++;
+	}
+}
+
 int main(int argc, char **argv)
 {
 	if (argc == 2)
-	{
-		while (*argv[1])
-			ft_putchar(change_upper_lower(*argv[1]++));
-	}
+		ulstr(argv[1]);
 	ft_putchar('\n');
 	return (0);
 }

@@ -1,6 +1,12 @@
 
 #include <unistd.h>
 
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 char *white_space(char *str)
 {
 	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
@@ -8,23 +14,21 @@ char *white_space(char *str)
 	return (str);
 }
 
-
-void ft_putchar(char c)
+void first_word(char *str)
 {
-	write(1, &c, 1);
+	char *s = white_space(str);
+	while (*s != ' ' && *s != '\0')
+	{
+		ft_putchar(*s);
+		s++;
+	}
 }
+
 
 int main(int argc, char **argv)
 {
-	if (argc == 2 )
-	{
-		char *s = white_space(argv[1]);
-		while (*s != ' ' && *s != '\0')
-		{
-			ft_putchar(*s);
-			s++;
-		}
-	}
+	if (argc == 2)
+		first_word(argv[1]);
 	ft_putchar('\n');
 	return (0);
 }

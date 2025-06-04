@@ -1,39 +1,39 @@
 
 #include <unistd.h>
 
-void ft_putstr(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
-}
-
 void ft_putchar(char c)
 {
-	write(1, &c, 1);
+    write(1, &c, 1);
 }
 
-void ft_putnbr(int n)
+void put_number(int n)
 {
-	if ( n > 9 )
-		ft_putnbr(n/10);
-	ft_putchar((n % 10) + '0');
+    if (n >= 10)
+        put_number(n / 10);
+    ft_putchar((n % 10) + '0');
 }
 
+void fizzbuzz(void)
+{
+    int num = 1;
+    while (num <= 100)
+    {
+        if (num % 3 == 0)
+            write(1, "fizz", 4);
+        else if (num % 5 == 0)
+            write(1, "buzz", 4);
+        else if (num % 3 == 0 && num % 5 == 0)
+            write(1, "fizzbuzz", 8);
+        else
+            put_number(num);
+        ft_putchar('\n');
+        num++;
+    }
+}
 
 int main(void)
 {
-	int i = 0;
-	while (++i <= 100)
-	{
-		if (i % 3 == 0 && i % 5 == 0)
-			ft_putstr("fizzbuzz");
-		else if (i % 5 == 0)
-			ft_putstr("buzz");
-		else if (i % 3 == 0)
-			ft_putstr("fizz");
-		else
-			ft_putnbr(i);
-		write(1, "\n", 1);
-	}
-	return (0);
+    fizzbuzz();
+    return 0;
 }
+

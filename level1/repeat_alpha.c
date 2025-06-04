@@ -1,31 +1,39 @@
 
 #include <unistd.h>
 
-void repeat_and_print(char c, int n)
+void print_repeat(char c, int n)
 {
 	while(n--)
 		write(1, &c, 1);
 }
 
+void repeat_alpha(char *str)
+{
+	int repeat;
+	while (*str)
+	{
+		if (*str >= 'a' && *str <= 'z')
+			repeat = *str - 'a' + 1;
+		else if (*str >= 'A' && *str <= 'Z')
+			repeat = *str - 'A' + 1;
+		else
+			repeat = 1;
+		print_repeat(*str, repeat);
+		str++;
+	}	
+}
+
+
 int main(int argc, char **argv)
 {
-	int i = 0;
 	int repeat;
 
 	if (argc == 2)
-	{
-		while(argv[1][i])
-		{
-			if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
-				repeat = argv[1][i] - 'a' + 1;
-			else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z')
-				repeat = argv[1][i] - 'A' + 1;
-			else
-				repeat = 1;
-			repeat_and_print(argv[1][i], repeat);
-			i++;
-		}
-	}
+		repeat_alpha(argv[1]);
 	write(1, "\n", 1);
-	return (0);
+	return(0);
 }
+
+
+
+
