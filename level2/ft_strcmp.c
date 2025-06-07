@@ -20,5 +20,3 @@ int main(void)
 	printf("비교 결과: %d\n", result);
 	return (0);
 }
-return (unsigned char)*s1 - (unsigned char)*s2;
-}

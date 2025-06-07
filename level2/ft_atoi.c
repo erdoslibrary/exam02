@@ -3,30 +3,29 @@
 
 int ft_atoi(const char *str)
 {
-	int i = 0;
 	int sign = 1;
 	int result = 0;
 
-	while ((str[i] >= '\t' && str[i] <= '\r') || (str[i] == ' '))
-		i++;
-	if (str[i] == '-')
+	while ((*str >= '\t' && *str <= '\r') || (*str == ' '))
+		str++;
+	if (*str == '-')
 	{
 		sign = -1;
-		i++;
+		str++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		result = (str[i] - '0') + result * 10;
-		i++;
+		result = (*str - '0') + result * 10;
+		str++;
 	}
 	return (sign * result);
 }
 
 int main(void)
 {
-	printf("입력: %s -> %d", "-456", ft_atoi("-456"));
+	printf("입력: %s -> %d\n", "-456", ft_atoi("-456"));
 	return 0;
 }
 

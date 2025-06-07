@@ -1,95 +1,49 @@
 
-void print_bits(unsigned char octet)
-{
-	int i = 7;
-
-	while (i >= 0)
-	{
-		if (octet & (1 << i))
-			write(1, "1", 1);
-		else
-			write(1, "0", 1);
-		i--;
-	}
-}
-
-int is_power_of_2(unsigned int n)
-{
-	if (n== 0)
-		return 0;
-	if (n & (n - 1) == 0)
-		return 1;
-	else
-		return 0;
-}
-
-int ft_atoi(const char *str)
-{
-	int i = 0;
-	int sign = 1;
-	int result = 0;
-
-	while ((str[i] >= '\t' && str[i] <= '\r') || (str[i] == ' '))
-		i++;
-	if(str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (str[i] - '0') + result * 10;
-		i++;
-	}
-	return (sign * result);
-}
-int main(void)
-{
-	printf(" 입력: %s -> %d", "-111", ft_atoi("111"));
-}
-unsigned char swap_bits(unsigned char octet)
-{
-	unsigned char left = (octet & 0xF0) >> 4;
-	unsigned char right = (octet & 0x0F) << 4;
-	return (left | right);
-}
+#include <unistd.h>
+#include <stdio.h>
 
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void ft_putstr(char *str)
+void print_bits(unsigned char octet)
 {
-	if(!str)
-		return (0);
-	while (*str)
+	int i = 7;
+	while (i >= 0)
 	{
-		(1, str++, 1);
+		if ((octet>> i) & 1)
+			ft_putchar('1');
+		else
+			ft_putchar('0');
+		i--;
 	}
 }
 
-int ft_strlen(char *str)
+unsigned char reverse_bits(unsigned char octet)
 {
+	unsigned char reversed = 0;
 	int i = 0;
 
-	while (str[i])
+	while(i < 8)
+	{
+		if (octet & (1 << i))
+			reversed |= (1 << (7 - i));
 		i++;
-	return (i);
+	}
+	return reversed;
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
-	int len;
+	unsigned char octet = 5;
+	unsigned char reversed = reverse_bits(octet);
 
-	if (argc == 2)
-	{
-		len = ft_strlen(argv[1]);
-		while (len-- > 0)
-			ft_putchar (argv[1][len]);
-	}
-	ft_putchar('\n');
-	return (0);
+	printf("original: %u\n", octet);
+	print_bits(octet);
+	printf("\n");
+	printf("reversed: %u\n", reversed);
+	print_bits(reversed);
+	printf("\n");
+	return 0;
 }
