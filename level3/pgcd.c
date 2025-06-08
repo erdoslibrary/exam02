@@ -6,7 +6,7 @@ void pgcd(int a, int b)
 {
 	int temp;
 
-	while (b)
+	while(b)
 	{
 		temp = b;
 		b = a % b;
@@ -18,7 +18,9 @@ void pgcd(int a, int b)
 int main(int argc, char **argv)
 {
 	if (argc == 3)
+	{
 		pgcd(atoi(argv[1]), atoi(argv[2]));
+	}
 	printf("\n");
-	return (0);
+	return 0;
 }

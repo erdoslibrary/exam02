@@ -12,7 +12,7 @@ int char_to_int(char c)
 	return -1;
 }
 
-int	ft_atoi_base(const char *str, int str_base)
+int	ft_atoi_base(const char *str, int base)
 {
 	int result = 0;
 	int sign = 1;
@@ -26,9 +26,9 @@ int	ft_atoi_base(const char *str, int str_base)
 	while (*str)
 	{
 		value = char_to_int(*str);
-		if (value < 0 || value >= str_base)
+		if (value < 0 || value >= base)
 			break;
-		result = result * str_base + value;
+		result = result * base + value;
 		str++;
 	}
 	return result * sign;
