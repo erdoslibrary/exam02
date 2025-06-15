@@ -14,7 +14,7 @@ int check_char(char *str, int len, char c)
 	return 0;
 }
 
-int exits_in(char *str, char c)
+int exist_in(char *str, char c)
 {
 	int i = 0;
 	while (str[i])
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 		int i = 0;
 		while (argv[1][i])
 		{
-			if (exits_in(argv[2], argv[1][i]) && !check_char(argv[1], i, argv[1][i]))
+			if (exist_in(argv[2], argv[1][i]) && !check_char(argv[1], i, argv[1][i]))
 				write(1, &argv[1][i], 1);
 			i++;
 		}

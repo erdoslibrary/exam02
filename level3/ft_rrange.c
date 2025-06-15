@@ -28,12 +28,11 @@ int *ft_rrange(int start, int end)
     
     // 배열에 역순으로 연속 값 채우기 (end부터 start까지)
     while (i < size)
-    {
+    // {
         arr[i] = end;  // end에서 시작
-        end += step;   // end를 증감
+        end = end + step;   // end를 증감
         i++;
     }
-    
     return (arr);
 }
 
