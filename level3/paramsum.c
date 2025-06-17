@@ -15,6 +15,8 @@ void ft_putnbr(int n)
 
 int main(int argc, char **argv)
 {
+	(void)argv;
+	
 	ft_putnbr(argc - 1);
 	ft_putchar('\n');
 	return (0);

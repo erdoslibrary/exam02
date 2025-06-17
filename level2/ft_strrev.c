@@ -25,14 +25,14 @@ char *ft_strrev(char *str)
     return str;
 }
 
-int main(void)
-{
-    char str[] = "hello, world!"; // 배열은 스택에 복사되어 읽기쓰기 가능
-    // 하지만 *str = "hello, world!"를 선언한 경우 읽기 전용이므로 바꿀수가 없다
-    // 이 떄문에 compile 하는 경우 segmentation fault가 발생한다다
-    char *reversed = ft_strrev(str);
+// int main(void)
+// {
+//     char str[] = "hello, world!"; // 배열은 스택에 복사되어 읽기쓰기 가능
+//     // 하지만 *str = "hello, world!"를 선언한 경우 읽기 전용이므로 바꿀수가 없다
+//     // 이 떄문에 compile 하는 경우 segmentation fault가 발생한다다
+//     char *reversed = ft_strrev(str);
 
-    printf("원본 문자열: %s\n", str);
-    printf("뒤집힌 문자열: %s\n", reversed);
-    return 0;
-}
+//     printf("원본 문자열: %s\n", str);
+//     printf("뒤집힌 문자열: %s\n", reversed);
+//     return 0;
+// }

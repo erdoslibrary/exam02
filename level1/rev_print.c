@@ -32,8 +32,6 @@ void rev_print(char *str)
 
 int main(int argc, char **argv)
 {
-	int len;
-
 	if (argc == 2)
 		rev_print(argv[1]);
 	ft_putchar('\n');

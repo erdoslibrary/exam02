@@ -34,16 +34,16 @@ unsigned char reverse_bits(unsigned char octet)
 	return reversed;
 }
 
-int main(void)
-{
-	unsigned char octet = 5;
-	unsigned char reversed = reverse_bits(octet);
+// int main(void)
+// {
+// 	unsigned char octet = 5;
+// 	unsigned char reversed = reverse_bits(octet);
 
-	printf("original: %u\n", octet);
-	print_bits(octet);
-	printf("\n");
-	printf("reversed: %u\n", reversed);
-	print_bits(reversed);
-	printf("\n");
-	return 0;
-}
+// 	printf("original: %u\n", octet);
+// 	print_bits(octet);
+// 	printf("\n");
+// 	printf("reversed: %u\n", reversed);
+// 	print_bits(reversed);
+// 	printf("\n");
+// 	return 0;
+// }

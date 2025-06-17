@@ -1,7 +1,7 @@
 
-
 #include <stdio.h>
 #include <stdlib.h>
+
 int *ft_rrange(int start, int end)
 {
     int *arr;
@@ -28,7 +28,7 @@ int *ft_rrange(int start, int end)
     
     // 배열에 역순으로 연속 값 채우기 (end부터 start까지)
     while (i < size)
-    // {
+    {
         arr[i] = end;  // end에서 시작
         end = end + step;   // end를 증감
         i++;
@@ -36,16 +36,16 @@ int *ft_rrange(int start, int end)
     return (arr);
 }
 
-int main(void)
-{
-	int *arr = ft_rrange(-2, 1);
-	int i = 0;
-	while (i < 4)
-	{
-		printf("%d", arr[i]);
-		i++;
-		printf(" ");
-	}
-	free(arr);
-	return 0;
-}
+// int main(void)
+// {
+// 	int *arr = ft_rrange(-2, 1);
+// 	int i = 0;
+// 	while (i < 4)
+// 	{
+// 		printf("%d", arr[i]);
+// 		i++;
+// 		printf(" ");
+// 	}
+// 	free(arr);
+// 	return 0;
+// }

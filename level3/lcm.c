@@ -20,12 +20,12 @@ unsigned int lcm(unsigned int a, unsigned int b)
 	return (a * b / gcd(a, b));
 }
 
-int main(void)
-{
-	unsigned int a = 12;
-	unsigned int b = 18;
+// int main(void)
+// {
+// 	unsigned int a = 12;
+// 	unsigned int b = 18;
 
-	printf("gcd 결과: %u\n", gcd(a, b));
-	printf("lcm 결과: %u\n", lcm(a, b));
-	return 0;
-}
+// 	printf("gcd 결과: %u\n", gcd(a, b));
+// 	printf("lcm 결과: %u\n", lcm(a, b));
+// 	return 0;
+// }

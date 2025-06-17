@@ -21,13 +21,13 @@ size_t ft_strcspn(const char *s, const char *reject)
 	return i;
 }
 
-int main(void)
-{
-	char *str = "hello, world";
-	char *reject = ",!";
-	size_t len = ft_strcspn(str, reject);
+// int main(void)
+// {
+// 	char *str = "hello, world";
+// 	char *reject = ",!";
+// 	size_t len = ft_strcspn(str, reject);
 
-	printf("처음 나오는 위치 %zu\n", len);
-	printf("결과: %.*s\n", (int)len, str);
-	return (0);
-}
+// 	printf("처음 나오는 위치 %zu\n", len);
+// 	printf("결과: %.*s\n", (int)len, str);
+// 	return (0);
+// }

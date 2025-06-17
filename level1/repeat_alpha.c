@@ -26,8 +26,6 @@ void repeat_alpha(char *str)
 
 int main(int argc, char **argv)
 {
-	int repeat;
-
 	if (argc == 2)
 		repeat_alpha(argv[1]);
 	write(1, "\n", 1);

@@ -31,8 +31,6 @@ void camel_to_snake(char *str)
 
 int main(int argc, char **argv)
 {
-    int i = 0;
-
     if (argc == 2)
         camel_to_snake(argv[1]);
     ft_putchar('\n');

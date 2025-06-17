@@ -36,13 +36,13 @@ char *ft_strdup(char *str)
     return dup;
 }
 
-int main(void)
-{
-    char *str = "Hello, World!";
-    char *dup = ft_strdup(str);
+// int main(void)
+// {
+//     char *str = "Hello, World!";
+//     char *dup = ft_strdup(str);
 
-    printf("원본: %s\n", str);
-    printf("복제: %s\n", dup);
-    free(dup);
-    return 0;
-}
+//     printf("원본: %s\n", str);
+//     printf("복제: %s\n", dup);
+//     free(dup);
+//     return 0;
+// }

@@ -30,7 +30,6 @@ void tab_multi(char *str)
 		ft_putnbr(n);
 		write(1, " = ", 3);
 		ft_putnbr(i * n);
-		ft_putchar('\n');
 		i++;
 	}
 }
@@ -39,7 +38,8 @@ int main(int argc, char **argv)
 {
 	if (argc == 2)
 		tab_multi(argv[1]);
-	ft_putchar('\n');
+	else
+		ft_putchar('\n');
 	return 0;
 }
 

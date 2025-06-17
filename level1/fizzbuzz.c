@@ -18,12 +18,12 @@ void fizzbuzz(void)
     int num = 1;
     while (num <= 100)
     {
-        if (num % 3 == 0)
+        if (num % 3 == 0 && num % 5 == 0)
+            write(1, "fizzbuzz", 8);
+        else if (num % 3 == 0)
             write(1, "fizz", 4);
         else if (num % 5 == 0)
             write(1, "buzz", 4);
-        else if (num % 3 == 0 && num % 5 == 0)
-            write(1, "fizzbuzz", 8);
         else
             put_number(num);
         ft_putchar('\n');

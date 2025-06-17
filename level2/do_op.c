@@ -35,6 +35,7 @@ int main(int argc, char **argv)
             return (0);
         printf("%d\n", result);
     }
-    write(1, "\n", 1);
+    else
+        write(1, "\n", 1);
     return (0);
 }
