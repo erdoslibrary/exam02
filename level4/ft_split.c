@@ -1,110 +1,99 @@
 
-#include <stdio.h>
 #include <stdlib.h>
 
-static int is_delimiter(char c)
+int is_sep(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n');
+ 	return (c == ' ' || c == '\t' || c == '\n');
 }
 
-static int count_words(char *str)
+int count_words(char *str)
 {
 	int count = 0;
+	int i = 0;
 
-	while (*str)
+	while(str[i])
 	{
-		while (*str && is_delimiter(*str))
-			str++;
-		if (*str)
+		while (str[i] && is_sep(str[i]))
+			i++;
+		if(str[i])
 		{
 			count++;
-			while (*str && !is_delimiter(*str))
-				str++;
+			while (str[i] && !is_sep(str[i]))
+				i++;
 		}
 	}
-	return (count);
+	return count;
 }
 
-static char *copy_word(char *start)
+char *copy_word(char *str, int start, int end)
 {
-	int len = 0;
-	char *word;
+	int len = end - start;
+	char *word = (char *)malloc(len + 1);
 	int i = 0;
-
-	while (start[len] && !is_delimiter(start[len]))
-		len++;
-	word = (char *)malloc(sizeof(char )*(len + 1));
+	
 	if (!word)
-		return (NULL);
-	while (i < len)
+		return NULL;
+	while (start < end)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return word;
+}
+
+void free_split(char **split)
+{
+	int i = 0;
+	while (split[i])
 	{
-		word[i] = start[i];
+		free(split[i]);
 		i++;
 	}
-	word[len] = '\0';
-	return (word);
-}
-
-static void free_all(char **words, int count)
-{
-	int i = 0;
-
-	while (i < count)
-		free(words[i++]);
-	free(words);
+	free(split);
 }
 
 char **ft_split(char *str)
 {
-	int word_count;
-	char **result;
-	int i = 0;
+	int i = 0; 
+	int w = 0;
+	int start;
 
-	if (!str)
-		return (NULL);
-
-	word_count = count_words(str);
-	result = (char **)malloc(sizeof(char *)*(word_count +1));
+	int word_count = count_words(str);
+	char **result = (char **)malloc(sizeof(char*)* (word_count + 1));
 	if (!result)
-		return (NULL);
-	while (*str)
+		return NULL;
+	while (str[i])
 	{
-		while (*str && is_delimiter(*str))
-			str++;
-		if (*str)
-		{
-			result[i] = copy_word(str);
-			if (!result[i])
-			{
-				free_all(result, i);
-				return (NULL);
-			}
+		while (str[i] && is_sep(str[i]))
 			i++;
-			while(*str && !is_delimiter(*str))
-				str++;
+		if(str[i])
+		{
+			start = i;
+			while (str[i] && !is_sep(str[i]))
+				i++;
+			result[w] = copy_word(str, start, i);
+			if(!result[w])
+			{
+				free_split(result);
+				return NULL;
+			}
+			w++;
 		}
 	}
-	result[i] = NULL;
-	return (result);
+	result[w] = NULL;
+	return result;
 }
 
-int main(void)
-{
-	char *test = "hello   word\tthis is\na\ttest";
-	char **words = ft_split(test);
-	int i = 0;
+// int main(void)
+// {
+// 	char **result;
+// 	int i = 0;
 
-	if (!words)
-	{
-		printf("Error: split failed\n");
-		return 1;
-	}
-	while (words[i])
-	{
-		printf("word[%d]: %s\n", i, words[i]);
-		free(words[i]);
-		i++;
-	}
-	free(words);
-	return (0);
-}
+// 	result = ft_split("Hello world!");
+// 	while (result[i])
+// 	{
+// 		printf("%s\n", result[i]);
+// 		free(result[i]);
+// 		i++;
+// 	}
+// 	free(result);
+// 	return 0;
+// }
