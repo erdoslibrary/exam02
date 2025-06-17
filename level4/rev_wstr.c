@@ -28,10 +28,13 @@ void rev_wstr(char *str)
 			i++;
 		end[word_count] = i;
 		word_count++;
-		if (!str[i])
+		if (!str[i]) // 문자열 끝나면 종료
 			break;
 		i++;
 	}
+
+	// start[0] end[0] 
+	// start[1] end[1] ... word_count 총 갯수
 
 	int j = word_count - 1;
 	while (j >= 0)

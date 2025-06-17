@@ -46,31 +46,6 @@ char	*ft_itoa(int nbr)
 	}
 	return(result);
 }
-char *ft_itoa(int nbr)
-{
-	char *result;
-	int len;
-	long num = nbr;
-
-	len = ft_numlen(num);
-	result = (char *)malloc(len + 1);
-	if (!result)
-		return (NULL);
-	result[len] = '\0';
-	if (num < 0 )
-	{
-		result[0] = '-';
-		num = -num;
-	}
-	if (num == 0)
-		result[0] = '0';
-	while (num != 0)
-	{
-		result[--len] == (num%10) + '0';
-		num /= 10;
-	}
-	return (result);
-}
 
 int	main(void)
 {

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-void fprime(int n)
+void fprime(int n) // 소인수분해
 {
 	int div = 2;
 	int first = 1;
