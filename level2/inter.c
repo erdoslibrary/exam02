@@ -13,7 +13,7 @@ int check_char(char *str, int len, char c)
 	}
 	return 0;
 }
-
+// 동일한 게 있는지 확인하는 함수
 int exist_in(char *str, char c)
 {
 	int i = 0;

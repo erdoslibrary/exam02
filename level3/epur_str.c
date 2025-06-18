@@ -10,14 +10,17 @@ void epur_str(char *str)
 {
 	int i = 0;
 
+	// 여백 패스
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
+	// 문자열 출력 부분
 	while (str[i])
 	{
 		while (str[i] && str[i]  != ' ' && str[i] != '\t')
 			ft_putchar(str[i++]);
 		while (str[i] == ' ' || str[i] == '\t')
 			i++;
+		// 마지막 단어가 아닌 경우에만 공백 출력
 		if(str[i])
 			ft_putchar(' ');
 	}

@@ -10,15 +10,18 @@ void expand_str(char *str)
 {
     int i = 0;
 
+    // 여백 스킵
     while (str[i] == ' ' || str[i] == '\t')
         i++;
+    // 문자열 출력 부분
     while (str[i])
     {
         while (str[i] && str[i] != ' ' && str[i] != '\t')
         {
             ft_putchar(str[i]);
             i++;
-        }  
+        }
+        // 공백 여백 만나면 패스
         while(str[i] == ' ' || str[i] == '\t')
             i++;
         if(str[i])

@@ -21,7 +21,7 @@ void rstr_capitalizer(char *str)
 				else 
 					ft_putchar(str[i]);
 			}
-			else
+			else // 다음 문자가 공백이 아니면 소문자로 변환
 			{ 
 				if (str[i] >= 'A' && str[i] <= 'Z')
 					ft_putchar(str[i] + ('a' - 'A'));

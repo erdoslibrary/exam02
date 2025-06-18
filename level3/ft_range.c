@@ -31,16 +31,17 @@ int *ft_range(int start, int end)
 	return (arr);
 }
 
-// int main(void)
-// {
-// 	int *arr = ft_range(-2, 1);
-// 	int i = 0;
-// 	while (i < 4)
-// 	{
-// 		printf("%d", arr[i]);
-// 		i++;
-// 		printf(" ");
-// 	}
-// 	free(arr);
-// 	return 0;
-// }
+int main(void)
+{
+	int *arr = ft_range(-2, 1);
+	int i = 0;
+	while (i < 4)
+	{
+		printf("%d", arr[i]);
+		i++;
+		printf(" ");
+	}
+	free(arr);
+	printf("\n");
+	return 0;
+}

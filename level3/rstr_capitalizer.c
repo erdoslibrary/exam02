@@ -27,7 +27,7 @@ char to_lower(char c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + ('a' - 'A'));
-	retrn (c);
+	return (c);
 }
 
 void rsrtr_capitalizer(char *str)

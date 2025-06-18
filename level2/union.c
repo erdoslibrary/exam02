@@ -1,6 +1,7 @@
 
 #include <unistd.h>
 
+//공통된 게 있느냐
 int check_char(char *str, int len, char c)
 {
     int i = 0;
@@ -29,6 +30,7 @@ int main(int argc, char **argv)
         {
             int in_first = check_char(argv[1], i, argv[2][j]);
             int in_self = check_char(argv[2], j, argv[2][j]);
+            // 공통도 아니고, 자기 자신 중복도 아니라면 출력
             if(!in_first && !in_self)
                 write(1, &argv[2][j], 1);
             j++;

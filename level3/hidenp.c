@@ -18,7 +18,7 @@ void hidenp(char *s1, char *s2)
     }
 
     // s2에서 s1의 각 문자를 순서대로 찾기
-    while (s2[j] && s1[i])
+    while (s1[i] && s2[j])
     {
         if (s2[j] == s1[i])
             i++;
@@ -36,7 +36,6 @@ int main(int argc, char **argv)
 {
     if (argc == 3)
         hidenp(argv[1], argv[2]);
-    
     ft_putchar('\n');
     return 0;
 }

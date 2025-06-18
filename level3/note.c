@@ -1,5 +1,8 @@
 
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -7,8 +10,8 @@ void ft_putchar(char c)
 
 void ft_putnbr(int n)
 {
-	if (n >9)
-		ft_putnbr(n/10);
+	if ( n > 9)
+		ft_putnbr(n / 10);
 	ft_putchar((n % 10) + '0');
 }
 
@@ -17,13 +20,11 @@ void tab_multi(char *str)
 	int i = 1;
 	int n = 0;
 
-	// 입력되는 인자가 한 자리라는 보장이 없다.
 	while (*str)
 	{
 		n = n * 10 + (*str - '0');
 		str++;
 	}
-
 	while (i <= 9)
 	{
 		ft_putnbr(i);
@@ -31,10 +32,10 @@ void tab_multi(char *str)
 		ft_putnbr(n);
 		write(1, " = ", 3);
 		ft_putnbr(i * n);
+		write(1, "\n", 1);
 		i++;
 	}
 }
-
 int main(int argc, char **argv)
 {
 	if (argc == 2)
@@ -43,4 +44,3 @@ int main(int argc, char **argv)
 		ft_putchar('\n');
 	return 0;
 }
-
