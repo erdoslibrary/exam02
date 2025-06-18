@@ -8,39 +8,64 @@ void ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void ft_putnbr(int n)
+int is_alpha(char c)
 {
-	if ( n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar((n % 10) + '0');
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
-void tab_multi(char *str)
+int is_space(char c)
 {
-	int i = 1;
-	int n = 0;
+	return (c == ' ' || c == '\t');
+}
 
-	while (*str)
+char to_upper(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);	
+}
+
+char to_lower(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
+}
+
+void rstr_capitalizer(char *str)
+{
+	int i = 0;
+
+	while (str[i])
 	{
-		n = n * 10 + (*str - '0');
-		str++;
-	}
-	while (i <= 9)
-	{
-		ft_putnbr(i);
-		write(1, " x ", 3);
-		ft_putnbr(n);
-		write(1, " = ", 3);
-		ft_putnbr(i * n);
-		write(1, "\n", 1);
+		if (is_alpha(str[i]))
+		{
+			if (is_space(str[i + 1]) || str[i + 1] == '\0')
+				ft_putchar(to_upper(str[i]));
+			else
+				ft_putchar(to_lower(str[i]));
+		}
+		else
+			ft_putchar(str[i]);
 		i++;
 	}
 }
+
 int main(int argc, char **argv)
 {
-	if (argc == 2)
-		tab_multi(argv[1]);
-	else
+	int i = 1;
+
+	if (argc == 1)
+	{
 		ft_putchar('\n');
-	return 0;
+		return (0);
+	}
+	while (i < argc)
+	{
+		rstr_capitalizer(argv[i]);
+		ft_putchar('\n');
+		i++;
+	}
+	return (0);
+
 }
