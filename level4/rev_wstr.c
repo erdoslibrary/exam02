@@ -26,7 +26,7 @@ void rev_wstr(char *str)
 		start[word_count] = i;
 		while (str[i] && str[i] != ' ' && str[i] != '\t')
 			i++;
-		end[word_count] = i;
+		end[word_count] = i; // 현재 단어의 끝 위치
 		word_count++;
 		if (!str[i]) // 문자열 끝나면 종료
 			break;

@@ -10,7 +10,7 @@ void ft_putchar(char c)
 
 int is_alpha(char c)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+	return (( c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
 int is_space(char c)
@@ -22,14 +22,14 @@ char to_upper(char c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);
-	return (c);	
+	return c;
 }
 
 char to_lower(char c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);
-	return (c);
+	return c;
 }
 
 void rstr_capitalizer(char *str)
@@ -38,7 +38,7 @@ void rstr_capitalizer(char *str)
 
 	while (str[i])
 	{
-		if (is_alpha(str[i]))
+		if(is_alpha(str[i]))
 		{
 			if (is_space(str[i + 1]) || str[i + 1] == '\0')
 				ft_putchar(to_upper(str[i]));
@@ -46,7 +46,9 @@ void rstr_capitalizer(char *str)
 				ft_putchar(to_lower(str[i]));
 		}
 		else
+		{
 			ft_putchar(str[i]);
+		}
 		i++;
 	}
 }
@@ -54,7 +56,6 @@ void rstr_capitalizer(char *str)
 int main(int argc, char **argv)
 {
 	int i = 1;
-
 	if (argc == 1)
 	{
 		ft_putchar('\n');
@@ -67,5 +68,4 @@ int main(int argc, char **argv)
 		i++;
 	}
 	return (0);
-
 }

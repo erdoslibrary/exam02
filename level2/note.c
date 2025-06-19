@@ -3,28 +3,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int max(int *tab, unsigned int n)
+void ft_putchar(char c)
 {
-	unsigned int i = 0;
-	int m;
-
-	if(!tab || n == 0)
-		return 0;
-	m = tab[0];
-	while (i < n)
-	{
-		if(tab[i] > m)
-			m = tab[i];
-		i++;
-	}
-	return m;
+	write(1, &c, 1);
 }
 
-int main(void)
+void wdmatch(char *s1, char *s2)
 {
-    int arr[] = {1, 5, 3, 9, 2};
-    int arr2[] = {};
-    printf("arr 최대값: %d\n", max(arr, 5));
-    printf("arr2 최대값: %d\n", max(arr2, 0));
-    return 0;
+	int i = 0;
+	int j = 0;
+
+	while (s1[i] && s2[j])
+	{
+		if (s1[i] == s2[j])
+			i++;
+		j++;
+	}
+	if (s1[i] == '\0')
+	{
+		i = 0;
+		while (s1[i])
+		{
+			ft_putchar(s1[i]);
+			i++;
+		}
+	}
+}
+
+int main(int argc, char **argv)
+{
+	if (argc == 3)
+		wdmatch(argv[1], argv[2]);
+	ft_putchar('\n');
+	return (0);
 }

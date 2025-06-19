@@ -11,15 +11,16 @@ void str_capitalizer(char *str)
 	int i = 0;
 	while (str[i])
 	{
-		// 공백 출력
+		// 공백 여러개면 그에 맞게 출력
 		while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\t'))
 			ft_putchar(str[i++]);
-		if (str[i])
+		if (str[i]) // 단어 발견 -> 대문자로 바꾸기
 		{
 			if (str[i] >= 'a' && str[i] <= 'z')
 				str[i] = str[i] - ('a' - 'A');
 			ft_putchar(str[i++]);
 		}
+		// 대문자 이후의 소문자 여러개를 처리
 		while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
 		{
 			if (str[i] >= 'A' && str[i] <= 'Z')

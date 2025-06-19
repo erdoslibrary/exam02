@@ -2,67 +2,47 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
-int ft_numlen(long n)
+
+#ifndef SORT_LIST_H
+# define SORT_LIST_H
+
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct	s_list
 {
-	int len = 0;
-	
-	if (n <= 0)
-	{
-		len = 1;
-		n =  -n;
-	}
-	while (n > 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
+	int data;
+	struct s_list *next;
+}				t_list;
 
-char *ft_itoa(int nbr)
+
+#endif
+
+t_list *sort_list(t_list *lst, int (*cmp)(int, int))
 {
-	char *result;
-	int len;
-	long num;
+	t_list *cur;
+	int swap;
+	int temp;
 
-	num = nbr;
-	len = ft_numlen(num);
-	result = (char *)malloc(len+1);
-	if (!result)
-		return (NULL);
-	result[len] = '\0';
-	if (num < 0)
+	if(!lst)
+		return lst;
+	swap = 1;
+	while (swap)
 	{
-		result[0] = '-';
-		num = -num;
-	}
-	if (num == 0)
-		result[0] = '0';
-	while (num)
-	{
-		result[--len] = (num %10) + '0';
-		num /= 10;
-	}
-	return (result);
-}
-
-int	main(void)
-{
-	int numbers[] = {INT_MAX, INT_MIN, 0, 1, -1, 42, -42};
-	int i;
-
-	for (i = 0; i < 7; i++)
-	{
-		char *str = ft_itoa(numbers[i]);
-		if (str)
+		swap = 0;
+		cur = lst;
+		while(cur->next)
 		{
-			printf("ft_itoa(%d) = %s\n", numbers[i], str);
-			free(str);
-		}
-		else
-		{
-			printf("ft_itoa(%d) = NULL (memory allocation failed)\n", numbers[i]);
+			if(!cmp(cur->data, cur->next->data))
+			{
+				temp = cur->data;
+				cur->data = cur->next->data;
+				cur->next->data = temp;
+				swap = 1;
+			}
+			cur = cur->next;
 		}
 	}
-	return (0);
+	return lst;
+
 }
