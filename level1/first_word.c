@@ -7,21 +7,18 @@ void ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-char *white_space(char *str)
+int main(int argc, char **argv)
 {
-	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
-		str++;
-	return (str);
-}
-
-void first_word(char *str)
-{
-	char *s = white_space(str);
-	while (*s != ' ' && *s != '\0')
+	if (argc == 2)
 	{
-		ft_putchar(*s);
-		s++;
+		int i = 0;
+		while (argv[1][i] && (argv[1][i] == ' ' || argv[1][i] == '\t'))
+			i++;
+		while (argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
+			ft_putchar(argv[1][i++]);
 	}
+	ft_putchar('\n');
+	return (0);
 }
 
 
